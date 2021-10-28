@@ -16,16 +16,13 @@ class ProbabilityPerNameViewModel {
     public var delegate : ProbabilityPerNameDelegate?
     
     private let service = ServiceProbability()
-    private var probabilityPerName : ProbabilityPerName?
     
-    public func loadProbabilitiesWithUrlSession(name : String) {
-        service.loadProbabilitiesWithUrlSession(name: name) { probabilityPerName in
-            if let probability = probabilityPerName {
-                DispatchQueue.main.async {
+    public func loadProbabilities(name : String, type: ApiRequestType) {
+        service.loadProbabilitiesPerName(name: name, type: type) { probability in
+            DispatchQueue.main.async {
+                if let probability = probability {
                     self.delegate?.loadedProbabilitiesPerName(probability: probability)
-                }
-            } else {
-                DispatchQueue.main.async {
+                } else {
                     self.delegate?.errorOnLoaded()
                 }
             }

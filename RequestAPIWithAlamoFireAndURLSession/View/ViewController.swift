@@ -18,15 +18,26 @@ class ViewController: UIViewController {
     
     private let viewModel = ProbabilityPerNameViewModel()
     
+    @IBOutlet weak var apiRequestSegmentedControl: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
+        self.viewModel.delegate = self
     }
 
 
     @IBAction func LoadProbabilities(_ sender: Any) {
-        if let name = nameTextField.text {
-            viewModel.loadProbabilitiesWithUrlSession(name: name.lowercased())
+        print("Indice selecionado: \(apiRequestSegmentedControl.selectedSegmentIndex)")
+        
+        if let name = self.nameTextField.text, !name.isEmpty {
+            switch apiRequestSegmentedControl.selectedSegmentIndex {
+                case 0:
+                    self.viewModel.loadProbabilities(name: name, type: .urlSession)
+                case 1:
+                    self.viewModel.loadProbabilities(name: name, type: .alamoFire)
+                default:
+                    break
+            }
         }
     }
     
