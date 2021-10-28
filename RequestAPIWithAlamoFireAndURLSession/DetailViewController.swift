@@ -16,13 +16,16 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        showTextView()
+    }
+    
+    private func showTextView() {
         if let probability = self.probabilityPerName {
             contentTextView.text.append("Name: \(probability.name)\n")
             for nation in probability.country {
                 contentTextView.text.append("Country ID: \(nation.country_id) ")
                 contentTextView.text.append("Probability: \(nation.probability)\n")
             }
-            
         }
     }
 }

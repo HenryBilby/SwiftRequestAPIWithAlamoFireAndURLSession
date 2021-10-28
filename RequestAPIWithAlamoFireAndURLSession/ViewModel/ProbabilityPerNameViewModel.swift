@@ -9,6 +9,7 @@ import Foundation
 
 protocol ProbabilityPerNameDelegate {
     func loadedProbabilitiesPerName(probability: ProbabilityPerName)
+    func errorOnLoaded()
 }
 
 class ProbabilityPerNameViewModel {
@@ -22,6 +23,10 @@ class ProbabilityPerNameViewModel {
             if let probability = probabilityPerName {
                 DispatchQueue.main.async {
                     self.delegate?.loadedProbabilitiesPerName(probability: probability)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.delegate?.errorOnLoaded()
                 }
             }
         }

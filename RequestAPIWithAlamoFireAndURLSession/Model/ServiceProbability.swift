@@ -9,12 +9,10 @@ import Foundation
 
 class ServiceProbability {
     
+    let url_typed = "https://api.nationalize.io?name="
+    
     public func loadProbabilitiesWithUrlSession(name: String, completion: @escaping (ProbabilityPerName?)->Void) {
-        let url_typed = "https://api.nationalize.io?name=\(name)"
-        
-        print(url_typed)
-        
-        guard let url = URL(string:url_typed) else {
+        guard let url = URL(string:url_typed+name) else {
             return completion(nil)
         }
         
@@ -31,6 +29,11 @@ class ServiceProbability {
                 print("JSON Error: \(error.localizedDescription)")
                 completion(nil)
             }
+            
         }.resume()
+    }
+    
+    public func loadProbabilitiesWithAlamo(name: String, completion: @escaping (ProbabilityPerName?)->Void) {
+    
     }
 }
