@@ -26,8 +26,7 @@ class ViewController: UIViewController {
 
     @IBAction func LoadProbabilities(_ sender: Any) {
         if let name = nameTextField.text {
-            print("View Controller Name typed: \(name)")
-            viewModel.loadProbabilities(name: name)
+            viewModel.loadProbabilitiesWithUrlSession(name: name.lowercased())
         }
     }
     
@@ -40,7 +39,6 @@ class ViewController: UIViewController {
 
 extension ViewController:ProbabilityPerNameDelegate {
     func loadedProbabilitiesPerName(probability: ProbabilityPerName) {
-        print("ViewController:ProbabilityPerNameDelegate Name retrieved: \(probability.name)")
         performSegue(withIdentifier: "detailProbabilities", sender: probability)
     }
 }

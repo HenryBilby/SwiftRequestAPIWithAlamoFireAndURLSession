@@ -7,14 +7,7 @@
 
 import Foundation
 
-//{"country_id":"US","probability":0.08986482266532715}
-
-class Country {
+struct Country : Codable {
     let country_id : String
     let probability : Double
-    
-    init(country_id : String, probability : Double) {
-        self.country_id = country_id
-        self.probability = probability
-    }
 }

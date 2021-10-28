@@ -7,12 +7,7 @@
 
 import Foundation
 
-class ProbabilityPerName {
+struct ProbabilityPerName : Codable {
     let name : String
-    let countries : [Country]
-
-    init(name : String, countries : [Country]) {
-        self.name = name
-        self.countries = countries
-    }
+    let country : [Country]
 }

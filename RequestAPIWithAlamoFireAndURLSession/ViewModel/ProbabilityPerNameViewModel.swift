@@ -17,11 +17,12 @@ class ProbabilityPerNameViewModel {
     private let service = ServiceProbability()
     private var probabilityPerName : ProbabilityPerName?
     
-    public func loadProbabilities(name : String) {
-        print("ProbabilityPerNameViewModel Name typed: \(name)")
+    public func loadProbabilitiesWithUrlSession(name : String) {
         service.loadProbabilitiesWithUrlSession(name: name) { probabilityPerName in
             if let probability = probabilityPerName {
-                self.delegate?.loadedProbabilitiesPerName(probability: probability)
+                DispatchQueue.main.async {
+                    self.delegate?.loadedProbabilitiesPerName(probability: probability)
+                }
             }
         }
     }

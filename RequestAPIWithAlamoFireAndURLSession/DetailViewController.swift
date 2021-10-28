@@ -11,11 +11,18 @@ class DetailViewController: UIViewController {
     
     public var probabilityPerName: ProbabilityPerName?
     
+    @IBOutlet weak var contentTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         if let probability = self.probabilityPerName {
-            print("DetailViewController name retrieved: \(probability.name)")
+            contentTextView.text.append("Name: \(probability.name)\n")
+            for nation in probability.country {
+                contentTextView.text.append("Country ID: \(nation.country_id) ")
+                contentTextView.text.append("Probability: \(nation.probability)\n")
+            }
+            
         }
     }
 }

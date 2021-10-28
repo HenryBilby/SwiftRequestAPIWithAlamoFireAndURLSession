@@ -66,10 +66,28 @@
                     <view key="view" contentMode="scaleToFill" id="SEN-Kk-tPv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l9D-PT-zy2">
+                                <rect key="frame" x="16" y="104" width="382" height="742"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="0us-fm-acX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0us-fm-acX" firstAttribute="trailing" secondItem="l9D-PT-zy2" secondAttribute="trailing" constant="16" id="Fzv-Jl-7wV"/>
+                            <constraint firstItem="l9D-PT-zy2" firstAttribute="leading" secondItem="0us-fm-acX" secondAttribute="leading" constant="16" id="fma-Yw-c9l"/>
+                            <constraint firstItem="l9D-PT-zy2" firstAttribute="top" secondItem="0us-fm-acX" secondAttribute="top" constant="16" id="iX9-As-v9U"/>
+                            <constraint firstItem="0us-fm-acX" firstAttribute="bottom" secondItem="l9D-PT-zy2" secondAttribute="bottom" constant="16" id="xiv-gb-mpO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VwZ-G8-wDe"/>
+                    <connections>
+                        <outlet property="contentTextView" destination="l9D-PT-zy2" id="v8K-Ey-0cr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhF-qr-Gfe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,6 +113,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

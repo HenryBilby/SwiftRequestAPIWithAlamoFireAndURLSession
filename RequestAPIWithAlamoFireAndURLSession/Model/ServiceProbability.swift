@@ -25,19 +25,12 @@ class ServiceProbability {
             }
             
             do {
-                let json = try JSONSerialization.jsonObject(with: dataReceived, options: [])
-                print(json)
+                let probabilityPerName = try JSONDecoder().decode(ProbabilityPerName.self, from: dataReceived)
+                completion(probabilityPerName)
             } catch {
                 print("JSON Error: \(error.localizedDescription)")
+                completion(nil)
             }
         }.resume()
-        
-        print("Service loadProbabilitiesWithUrlSession Name typed: \(name)")
-        let countries : [Country] = [.init(country_id: "US", probability: 0.08986482266532715),
-                                     .init(country_id: "AU", probability: 0.05976757527083082)]
-
-        let prob = ProbabilityPerName(name: "Michael", countries: countries)
-
-        completion(prob)
     }
 }
