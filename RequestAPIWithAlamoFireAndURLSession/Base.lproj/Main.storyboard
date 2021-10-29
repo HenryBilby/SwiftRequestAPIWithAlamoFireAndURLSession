@@ -47,6 +47,14 @@
                                     <segment title="AlamoFire"/>
                                 </segments>
                             </segmentedControl>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="7vT-jt-HZh">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="1XM-f3-Q0b"/>
+                                    <constraint firstAttribute="height" constant="50" id="g40-Fp-8cd"/>
+                                </constraints>
+                                <color key="color" red="0.0" green="0.45882352939999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -55,9 +63,11 @@
                             <constraint firstItem="Lr1-Vt-BJO" firstAttribute="top" secondItem="IAs-Jn-mOr" secondAttribute="bottom" constant="16" id="S6v-QL-Zf1"/>
                             <constraint firstItem="IAs-Jn-mOr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="V5C-eq-cZn"/>
                             <constraint firstItem="R7h-C7-zQy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Wr3-US-5NQ"/>
+                            <constraint firstItem="7vT-jt-HZh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bQ3-ah-u8t"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R7h-C7-zQy" secondAttribute="trailing" constant="16" id="dnZ-9v-hBF"/>
                             <constraint firstItem="IAs-Jn-mOr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="iiC-Q5-xsI"/>
                             <constraint firstItem="R7h-C7-zQy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="lgn-49-wI2"/>
+                            <constraint firstItem="7vT-jt-HZh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pVP-kv-0qb"/>
                             <constraint firstItem="Lr1-Vt-BJO" firstAttribute="centerX" secondItem="IAs-Jn-mOr" secondAttribute="centerX" id="qEh-P9-5Rb"/>
                             <constraint firstItem="IAs-Jn-mOr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sAG-aO-Xsu"/>
                         </constraints>
@@ -65,6 +75,7 @@
                     <navigationItem key="navigationItem" id="CS7-sC-yyl"/>
                     <connections>
                         <outlet property="apiRequestSegmentedControl" destination="R7h-C7-zQy" id="mqX-hD-Jcf"/>
+                        <outlet property="loadingActivity" destination="7vT-jt-HZh" id="49D-gv-xCg"/>
                         <outlet property="nameTextField" destination="IAs-Jn-mOr" id="ae8-bX-ww0"/>
                         <segue destination="7fr-RS-oJT" kind="show" identifier="detailProbabilities" id="eM9-Cr-0FR"/>
                     </connections>

@@ -14,6 +14,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var loadingActivity: UIActivityIndicatorView!
     @IBOutlet weak var nameTextField: UITextField!
     
     private let viewModel = ProbabilityPerNameViewModel()
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
         print("Indice selecionado: \(apiRequestSegmentedControl.selectedSegmentIndex)")
         
         if let name = self.nameTextField.text, !name.isEmpty {
+            loadingActivity.startAnimating()
             switch apiRequestSegmentedControl.selectedSegmentIndex {
                 case 0:
                     self.viewModel.loadProbabilities(name: name, type: .urlSession)
@@ -60,14 +62,22 @@ class ViewController: UIViewController {
         
         self.present(dialogMessage, animated: true, completion: nil)
     }
+    
+    private func stopLoadingIndicator() {
+        if self.loadingActivity.isAnimating {
+            self.loadingActivity.stopAnimating()
+        }
+    }
 }
 
 extension ViewController:ProbabilityPerNameDelegate {
     func errorOnLoaded() {
+        stopLoadingIndicator()
         showDialog(message: "Erro ao carregar os dados.", title: "Erro", probability: nil)
     }
     
     func loadedProbabilitiesPerName(probability: ProbabilityPerName) {
+        stopLoadingIndicator()
         showDialog(message: "Sucesso ao carregar os dados.", title: "Sucesso", probability: probability)
     }
 }
