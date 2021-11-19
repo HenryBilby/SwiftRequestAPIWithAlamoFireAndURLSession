@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 import Alamofire
 
 enum ApiRequestType {
@@ -17,7 +16,7 @@ enum ApiRequestType {
 class ServiceProbability {
     private let url = "https://api.nationalize.io?name="
     
-    public func loadProbabilitiesPerName(name: String, type: ApiRequestType, completion: @escaping (ProbabilityPerName?)->Void){
+    func loadProbabilitiesPerName(name: String, type: ApiRequestType, completion: @escaping (ProbabilityPerName?)->Void){
         switch type {
             case .urlSession:
                 self.loadProbabilitiesWithUrlSession(name: name) { probability in
@@ -30,7 +29,7 @@ class ServiceProbability {
         }
     }
     
-    private func loadProbabilitiesWithUrlSession(name: String, completion: @escaping (ProbabilityPerName?)->Void) {
+    func loadProbabilitiesWithUrlSession(name: String, completion: @escaping (ProbabilityPerName?)->Void) {
         guard let urlFull = URL(string:url+name) else {
             return completion(nil)
         }
@@ -46,7 +45,7 @@ class ServiceProbability {
         }.resume()
     }
     
-    private func loadProbabilitiesWithAlamo(name: String, completion: @escaping (ProbabilityPerName?)->Void) {
+    func loadProbabilitiesWithAlamo(name: String, completion: @escaping (ProbabilityPerName?)->Void) {
         Alamofire.request(url+name).responseJSON { response in
             switch response.result {
                 case .failure(_):
@@ -57,7 +56,7 @@ class ServiceProbability {
         }.resume()
     }
     
-    private func decodeDataFromJSON(data: Data?) -> ProbabilityPerName? {
+    func decodeDataFromJSON(data: Data?) -> ProbabilityPerName? {
         guard let dataReceived = data else {
             return nil
         }

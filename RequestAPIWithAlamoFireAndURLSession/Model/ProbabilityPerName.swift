@@ -7,7 +7,14 @@
 
 import Foundation
 
-struct ProbabilityPerName : Codable {
+struct ProbabilityPerName : Decodable {
     let name : String
     let country : [Country]
+}
+
+extension ProbabilityPerName: Equatable {
+    static func == (lhs: ProbabilityPerName, rhs: ProbabilityPerName) -> Bool {
+        return lhs.name == rhs.name &&
+        lhs.country == rhs.country
+    }
 }
